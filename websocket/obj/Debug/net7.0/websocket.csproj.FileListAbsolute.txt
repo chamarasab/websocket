@@ -1,0 +1,15 @@
+/workspaces/websocket/websocket/bin/Debug/net7.0/websocket
+/workspaces/websocket/websocket/bin/Debug/net7.0/websocket.deps.json
+/workspaces/websocket/websocket/bin/Debug/net7.0/websocket.runtimeconfig.json
+/workspaces/websocket/websocket/bin/Debug/net7.0/websocket.dll
+/workspaces/websocket/websocket/bin/Debug/net7.0/websocket.pdb
+/workspaces/websocket/websocket/obj/Debug/net7.0/websocket.csproj.AssemblyReference.cache
+/workspaces/websocket/websocket/obj/Debug/net7.0/websocket.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/websocket/websocket/obj/Debug/net7.0/websocket.AssemblyInfoInputs.cache
+/workspaces/websocket/websocket/obj/Debug/net7.0/websocket.AssemblyInfo.cs
+/workspaces/websocket/websocket/obj/Debug/net7.0/websocket.csproj.CoreCompileInputs.cache
+/workspaces/websocket/websocket/obj/Debug/net7.0/websocket.dll
+/workspaces/websocket/websocket/obj/Debug/net7.0/refint/websocket.dll
+/workspaces/websocket/websocket/obj/Debug/net7.0/websocket.pdb
+/workspaces/websocket/websocket/obj/Debug/net7.0/websocket.genruntimeconfig.cache
+/workspaces/websocket/websocket/obj/Debug/net7.0/ref/websocket.dll
