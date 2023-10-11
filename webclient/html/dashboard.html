@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Peoples Bank collection web portal">
+    <meta name="author" content="Sanjeewa Kariyawasam">
+    <title>Dashboard</title>
+
+    <script src="js/jquery.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- Favicons -->
+    <link rel="icon" href="images/favicon-32x32.png" sizes="32x32" type="image/png">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        .inline {
+            display: inline-block;
+            float: right;
+            margin: 20px 0px;
+        }
+
+        .inline_c {
+            display: inline-block;
+            float: right;
+            margin: 20px 0px;
+        }
+
+
+        input,
+        button {
+            height: 34px;
+        }
+
+        .pagination {
+            display: inline-block;
+        }
+
+        .pagination_c {
+            display: inline-block;
+        }
+
+        .pagination a {
+            font-weight: bold;
+            font-size: 10px;
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            border: 1px solid grey;
+        }
+
+        .pagination_c a {
+            font-weight: bold;
+            font-size: 10px;
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            border: 1px solid grey;
+        }
+
+        .pagination a.active {
+            background-color: #c7555a;
+        }
+
+        .pagination a:hover:not(.active) {
+            background-color: #fbb418;
+        }
+
+        .pagination_c a.active {
+            background-color: #c7555a;
+        }
+
+        .pagination_c a:hover:not(.active) {
+            background-color: #fbb418;
+        }
+
+        body {
+            font-family: Arial;
+        }
+
+        /* Style the tab */
+        .tab {
+            overflow: hidden;
+        }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            margin: 8px;
+            padding: 5px 5px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+        }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
+
+    <!--fontawesome-->
+    <link href="css/all.css" rel="stylesheet" type="text/css" />
+
+    <!--datatable-->
+    <link href="css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+
+
+    <script TYPE="text/javascript">
+        function popup(mylink, windowname) {
+            if (!window.focus)
+                return true;
+            var href;
+            if (typeof (mylink) == 'string')
+                href = mylink;
+            else
+                href = mylink.href;
+            window.open(href, windowname, 'width=1000,height=900,left=200,top=50,scrollbars=yes');
+            return false;
+        }
+
+        function popupHost(mylink, windowname) {
+            if (!window.focus)
+                return true;
+            var href;
+            if (typeof (mylink) == 'string')
+                href = mylink;
+            else
+                href = mylink.href;
+            window.open(href, windowname, 'width=1500,height=900,left=200,top=50,scrollbars=yes');
+            return false;
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"
+        style="background-image: url('images/bg-head.png');">
+        <img src="images/collection-pb.png" style="height: 50px" />
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse"
+            data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="btn-group me-2 px-1">
+            <span class="btn btn-sm btn-outline-secondary">
+                <?php echo $_SESSION['institute_name'] ?>
+            </span>
+            <button type="button" class="btn btn-sm btn-outline-secondary">
+                <?php echo $_SESSION['username'] ?>
+            </button>
+            <a href="logout.php" class="btn btn-sm btn-outline-danger">Sign out</a>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="sidebar-sticky p-3">
+                    <ul class="nav flex-column">
+                        <!--<li class="nav-item">Item 1</li>-->
+
+                    </ul>
+                </div>
+            </nav>
+
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+
+                    <h4 class="h4">Bill Payments</h4>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <form action="" method="post" class="d-flex flex-wrap align-items-center">
+                                    <div class="flex-grow-1 me-2">
+                                        <label for="billers">Billers</label>
+                                        <select class="form-select" aria-label="Default select example" id="biller"
+                                            name="biller">
+                                            <option selected>Select</option>
+
+                                            <?php foreach ($billersArray as $biller) : ?>
+
+                                            <option
+                                                value="<?php echo isset($biller['id']) ? $biller['id'] : 'Not Set'; ?>">
+                                                <?php echo isset($biller['name']) ? $biller['name'] : 'Not Set'; ?>
+                                            </option>
+
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+
+                                    <input type="hidden" id="cracc" name="cracc" value="">
+
+                                    <input type="hidden" id="biller_acc_no" name="biller_acc_no" value="">
+
+                                    <div class="flex-grow-1 me-2">
+                                        <label for="reference">Reference</label>
+                                        <input type="number" name="reference" id="reference" class="form-control">
+                                    </div>
+                                    <div class="flex-grow-1 me-2">
+                                        <label for="amount">Amount</label>
+                                        <input type="number" name="amount" id="amount" class="form-control">
+                                    </div>
+                                    <div class="flex-grow-1 me-2">
+                                        <label for="mobile">Mobile</label>
+                                        <input type="number" name="mobile" id="mobile" class="form-control">
+                                    </div>
+                                    <div class="align-self-end">
+                                        <button type="submit" class="btn btn-primary">Ok</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card my-2">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Reference</th>
+                                        <th scope="col">Amount</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Response</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($slicedDataArray as $data) : ?>
+                                    <tr>
+                                        <td>
+                                            <?php echo isset($data['id']) ? $data['id'] : 'Not Set'; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo isset($data['reference']) ? $data['reference'] : 'Not Set'; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo isset($data['amount']) ? $data['amount'].'.00' : 'Not Set'; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo isset($data['date']) ? $data['date'] : 'Not Set'; ?>
+                                        </td>
+                                        <td>
+                                            <?php if($data['response'] == "success") : ?>
+                                            <span class="badge text-bg-success">
+                                                <?php echo "Success"; ?>
+                                            </span>
+                                            <?php else : ?>
+                                            <span class="badge text-bg-warning">
+                                                <?php echo $data["response"]; ?>
+                                            </span>
+                                            <?php endif; ?>
+                                        </td>
+                                        <td><!--id reference amount date response-->
+                                            <button type="submit" class="btn btn-sm btn-outline-warning"
+                                                data-bs-toggle="modal" data-bs-target="#printModal"
+                                                data-bs-id="<?php if (empty($data['id'])) : echo 'not set'; else: echo $data['id']; endif; ?>"
+                                                data-bs-reference="<?php if (empty($data['reference'])) : echo 'not set'; else: echo $data['reference']; endif; ?>"
+                                                data-bs-amount="<?php if (empty($data['amount'])) : echo 'not set'; else: echo $data['amount']; endif; ?>"
+                                                data-bs-date="<?php if (empty($data['date'])) : echo 'not set'; else: echo $data['date']; endif; ?>"
+                                                data-bs-response="<?php if (empty($data['response'])) : echo 'not set'; else: echo $data['response']; endif; ?>"
+                                                id="print" onclick="printModalFields(this)">
+                                                View
+                                            </button>
+                                            <!--old button was here-->
+                                            <button class="btn btn-sm btn-outline-danger"
+                                                data-id="<?php echo $data['id']; ?>"
+                                                data-reference="<?php echo $data['reference']; ?>"
+                                                data-amount="<?php echo $data['amount']; ?>"
+                                                data-date="<?php echo $data['date']; ?>"
+                                                data-response="<?php echo $data['response']; ?>"
+                                                onclick="printRecord(this)">
+                                                Doc
+                                            </button>
+
+                                            <button type="submit" class="btn btn-sm btn-outline-primary print-button"
+                                                data-bs-id="<?php if (empty($data['id'])) : echo 'not set'; else: echo $data['id']; endif; ?>"
+                                                data-bs-reference="<?php if (empty($data['reference'])) : echo 'not set'; else: echo $data['reference']; endif; ?>"
+                                                data-bs-amount="<?php if (empty($data['amount'])) : echo 'not set'; else: echo $data['amount']; endif; ?>"
+                                                data-bs-date="<?php if (empty($data['date'])) : echo 'not set'; else: echo $data['date']; endif; ?>"
+                                                data-bs-response="<?php if (empty($data['response'])) : echo 'not set'; else: echo $data['response']; endif; ?>"
+                                                id="print-button">
+                                                Print
+                                            </button>
+                                            <button type="button" id="sms-button"
+                                                class="btn btn-sm btn-outline-primary sms-button"
+                                                data-bs-id="<?php if (empty($data['id'])) : echo 'not set'; else: echo $data['id']; endif; ?>"
+                                                data-bs-reference="<?php if (empty($data['reference'])) : echo 'not set'; else: echo $data['reference']; endif; ?>"
+                                                data-bs-amount="<?php if (empty($data['amount'])) : echo 'not set'; else: echo $data['amount']; endif; ?>"
+                                                data-bs-date="<?php if (empty($data['date'])) : echo 'not set'; else: echo $data['date']; endif; ?>"
+                                                data-bs-response="<?php if (empty($data['response'])) : echo 'not set'; else: echo $data['response']; endif; ?>">
+                                                SMS
+                                            </button>
+
+                                        </td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                            <!-- Pagination Links -->
+                            <nav aria-label="Page navigation" class="dropdown position-fixed bottom-0 end-3 mb-0 me-3">
+                                <ul class="pagination">
+                                    <?php if ($currentPage > 1) : ?>
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page=<?php echo ($currentPage - 1); ?>">Previous</a>
+                                    </li>
+                                    <?php endif; ?>
+
+                                    <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
+                                    <li class="page-item <?php echo ($i === $currentPage) ? 'active' : ''; ?>">
+                                        <a class="page-link" href="?page=<?php echo $i; ?>">
+                                            <?php echo $i; ?>
+                                        </a>
+                                    </li>
+                                    <?php endfor; ?>
+
+                                    <?php if ($currentPage < $totalPages) : ?>
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page=<?php echo ($currentPage + 1); ?>">Next</a>
+                                    </li>
+                                    <?php endif; ?>
+                                </ul>
+                            </nav>
+                            <!--Pagination end-->
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!--modal start-->
+    <div class="modal fade" id="printModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                        Print Preview
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" id="print-form">
+                        <div class="mb-3">
+                            <label for="id" class="col-form-label">ID</label>
+                            <input type="text" class="form-control" id="id-modal" name="id" value='' readonly />
+                        </div>
+                        <div class="mb-3">
+                            <label for="reference" class="col-form-label">Reference</label>
+                            <input type="text" class="form-control" id="reference-modal" name="reference" value=''
+                                readonly />
+                        </div>
+                        <div class="mb-3">
+                            <label for="date" class="col-form-label">Date</label>
+                            <input type="text" class="form-control" id="date-modal" name="date" value='' readonly />
+                        </div>
+                        <div class="mb-3">
+                            <label for="amount" class="col-form-label">Amount</label>
+                            <input type="text" class="form-control" id="amount-modal" name="amount" value='' readonly />
+                        </div>
+                        <div class="mb-3">
+                            <label for="response" class="col-form-label">Response</label>
+                            <input type="text" class="form-control" id="response-modal" name="response" value=''
+                                readonly />
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                Close
+                            </button>
+                            <button type="button" class="btn btn-primary" onclick="printModalContent()">
+                                Print
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--modal end-->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const smsButtons = document.querySelectorAll(".sms-button");
+            const socket = new WebSocket("ws://localhost:8080"); // Replace with your WebSocket server address
+
+            // Function to send data to the WebSocket server
+            function sendDataToWebSocket(data) {
+                if (socket.readyState === WebSocket.OPEN) {
+                    // If the WebSocket connection is open, send the data as a JSON string
+                    const jsonData = JSON.stringify(data);
+                    socket.send(jsonData);
+                } else {
+                    // Handle the case where the WebSocket connection is not open
+                    console.error("WebSocket connection is not open.");
+                }
+            }
+
+            // Event listener for SMS buttons
+            smsButtons.forEach(function (button) {
+                button.addEventListener("click", function () {
+                    // Extract data from the button's attributes
+                    const id = button.getAttribute("data-bs-id");
+                    const reference = button.getAttribute("data-bs-reference");
+                    const amount = button.getAttribute("data-bs-amount");
+                    const date = button.getAttribute("data-bs-date");
+                    const response = button.getAttribute("data-bs-response");
+
+                    // Create an object with the extracted data
+                    const dataToSend = {
+                        id: id,
+                        reference: reference,
+                        amount: amount,
+                        date: date,
+                        response: response
+                    };
+
+                    // Send the data to the WebSocket server
+                    sendDataToWebSocket(dataToSend);
+                });
+            });
+
+            // WebSocket event handlers
+            socket.onopen = function (event) {
+                console.log("Connected to WebSocket server");
+            };
+
+            socket.onmessage = function (event) {
+                // Handle messages received from the WebSocket server
+                console.log("Message received from server:", event.data);
+            };
+
+            socket.onerror = function (event) {
+                console.error("WebSocket Error: ", event);
+            };
+
+            socket.onclose = function (event) {
+                if (event.wasClean) {
+                    console.log(`Connection closed cleanly, code=${event.code}, reason=${event.reason}`);
+                } else {
+                    console.error(`Connection died`);
+                }
+            }
+
+        });
+
+    </script>
+
+    <script>
+        document.querySelectorAll(".print-button").forEach(function (button) {
+            button.addEventListener("click", function () {
+                var itemId = this.getAttribute("data-bs-id");
+                var reference = this.getAttribute("data-bs-reference");
+                var amount = this.getAttribute("data-bs-amount");
+                var date = this.getAttribute("data-bs-date");
+                var response = this.getAttribute("data-bs-response");
+
+                var printContent = '<div style="background-color: #333; color: white; padding: 10px; text-align: center;"><h2>' + 'Bills' + '</h2></div>';
+                printContent += '<table>';
+                printContent += '<tr><td>Id:</td><td>' + itemId + '</td></tr>';
+                printContent += '<tr><td>Reference:</td><td>' + reference + '</td></tr>';
+                printContent += '<tr><td>Amount:</td><td>' + amount + '</td></tr>';
+                printContent += '<tr><td>Date:</td><td>' + date + '</td></tr>';
+                printContent += '<tr><td>Response:</td><td>' + response + '</td></tr>';
+                printContent += '</table>';
+
+                // Open a new window/tab with the print-friendly content
+                var printWindow = window.open('', '', 'width=600,height=600');
+                printWindow.document.open();
+                printWindow.document.write('<html><head><title>Print</title></head><body>');
+                printWindow.document.write(printContent);
+                printWindow.document.write('</body></html>');
+                printWindow.document.close();
+
+                // Trigger the print dialog
+                printWindow.print();
+                printWindow.close();
+            });
+        });
+    </script>
+
+    <script>
+        function printModalFields(button) {
+            var id = button.getAttribute("data-bs-id");
+            var reference = button.getAttribute("data-bs-reference");
+            var amount = button.getAttribute("data-bs-amount");
+            var date = button.getAttribute("data-bs-date");
+            var response = button.getAttribute("data-bs-response");
+
+            document.getElementById("id-modal").value = id;
+            document.getElementById("reference-modal").value = reference;
+            document.getElementById("amount-modal").value = amount;
+            document.getElementById("date-modal").value = date;
+            document.getElementById("response-modal").value = response;
+
+        }
+
+        function printRecordOld(id, reference, amount, date, response) {
+            window.open('printpreview.php?id=' + id + '&reference=' + reference + '&amount=' + amount + '&date=' + date + '&response=' + response);
+        }
+
+        function printRecord(button) {
+            var id = button.getAttribute('data-id');
+            var reference = button.getAttribute('data-reference');
+            var amount = button.getAttribute('data-amount');
+            var date = button.getAttribute('data-date');
+            var response = button.getAttribute('data-response');
+
+            window.open('printpreview.php?id=' + id + '&reference=' + reference + '&amount=' + amount + '&date=' + date + '&response=' + response);
+
+        }
+    </script>
+
+    <script src="js/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="js/bootstrap.bundle.min.js"
+        integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd"
+        crossorigin="anonymous"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/feather.min.js"></script>
+    <script src="js/dashboard.js"></script>
+
+    <script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                "bPaginate": false,
+                scrollX: true,
+            });
+        });
+        $(document).ready(function () {
+            $('#example_c').DataTable({
+                "bPaginate": false,
+                scrollX: true,
+            });
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        const billerDropdown = document.getElementById('biller');
+        const billerAccNoInput = document.getElementById('biller_acc_no');
+
+        billerDropdown.addEventListener('change', function () {
+            const selectedOptionId = billerDropdown.value;
+
+            if (selectedOptionId !== 'Select') {
+                // Make an AJAX request to "getBillerAccNo.php" to fetch biller_acc_no
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://localhost/bill_payment/getBillerAccNo.php',
+                    data: { biller_id: selectedOptionId },
+                    dataType: 'json',
+                    success: function (response) {
+                        if (response && response.accountno) {
+                            // Update the input box value with the fetched biller_acc_no
+                            billerAccNoInput.value = response.accountno;
+                        } else {
+                            // Handle the case where no data is returned or an error occurs
+                            billerAccNoInput.value = 'Error';
+                        }
+                    },
+                    error: function () {
+                        // Handle AJAX error here
+                        billerAccNoInput.value = 'Error';
+                    }
+                });
+            } else {
+                billerAccNoInput.value = '';
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>

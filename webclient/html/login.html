@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Peoples Bank collection web portal">
+    <meta name="author" content="PeoplesBank IT Department">
+    <title>Billers</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- Favicons -->
+    <link rel="icon" href="images/favicon-32x32.png" sizes="32x32" type="image/png">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
+
+    <!--fontawesome-->
+    <link href="css/all.css" rel="stylesheet" type="text/css" />
+
+
+    <link rel="stylesheet" href="css/chosen.css">
+
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"
+        style="background-image: url('images/bg-head.png');">
+        <img src="images/collection-pb.png" style="height: 50px" />
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse"
+            data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <span style="text-align: left"> </span>
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-sm">
+                <!--One of three columns-->
+            </div>
+            <div class="col-sm">
+                <div class="text-center">
+                    <h4 style="margin-top: 25px">
+                        Bill Payment
+                        <span style="font-size: x-small">(v1.0)</span>
+                    </h4>
+                </div>
+
+                <form action="" method="post">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" class="form-control" id="username">
+                        <small id="username" class="form-text text-muted">The userneme given by the bank.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" class="form-control" id="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="captcha">
+                            Please enter the
+                            <span style="font-weight: bold; color: rgb(189, 17, 11);">
+                                number you see below
+                            </span>
+                        </label>
+
+                        <div class="input-group mb-3">
+                            <input type="number" class="form-control" id="captcha" name="captcha">
+                            <span class="input-group-text bg-light" id="captcha"
+                                style="border-top-left-radius: 0; border-bottom-left-radius: 0;">
+                                <img src="captcha.php" alt="capcha" />
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3"
+                            value="option3" disabled>
+                        <label class="form-check-label" for="exampleRadios3">
+                            BTS
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3"
+                            value="option3" disabled>
+                        <label class="form-check-label" for="exampleRadios3">
+                            AD
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                            value="option1" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                            External
+                        </label>
+                    </div>
+
+                    <div class="">
+                        <button type="submit" name="btnLogin" class="btn btn-primary mt-2"
+                            style="width: 426px;">Login</button>
+                    </div>
+                </form>
+
+
+            </div>
+            <div class="col-sm">
+                <!--One of three columns-->
+            </div>
+
+
+        </div>
+    </div>
+
+    <script src="js/jquery-3.5.1.slim.min.js" type="text/javascript"></script>
+    <script src="js/chosen.jquery.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        var config = {
+            '.chosen-select': {},
+            '.chosen-select-deselect': {
+                allow_single_deselect: true
+            },
+            '.chosen-select-no-single': {
+                disable_search_threshold: 10
+            },
+            '.chosen-select-no-results': {
+                no_results_text: 'Oops, nothing found!'
+            },
+            '.chosen-select-width': {
+                width: "95%"
+            }
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+
+<body>
+    <div class="container my-3">
+        <!--card start-->
+        <div class="card">
+            <div class="card-header">
+                <h3>Billing System</h3>
+            </div>
+            <div class="card-body">
+                <form method="post" id="print-form">
+                    <div class="mb-3">
+                        <label for="id" class="col-form-label">ID</label>
+                        <input type="text" class="form-control" id="id-modal" name="id" value='<?php echo $id; ?>'
+                            readonly />
+                    </div>
+                    <div class="mb-3">
+                        <label for="reference" class="col-form-label">Reference</label>
+                        <input type="text" class="form-control" id="reference-modal" name="reference"
+                            value='<?php echo $reference; ?>' readonly />
+                    </div>
+                    <div class="mb-3">
+                        <label for="date" class="col-form-label">Date</label>
+                        <input type="text" class="form-control" id="date-modal" name="date" value='<?php echo $date; ?>'
+                            readonly />
+                    </div>
+                    <div class="mb-3">
+                        <label for="amount" class="col-form-label">Amount</label>
+                        <input type="text" class="form-control" id="amount-modal" name="amount"
+                            value='<?php echo $amount; ?>' readonly />
+                    </div>
+                    <div class="mb-3">
+                        <label for="response" class="col-form-label">Response</label>
+                        <input type="text" class="form-control" id="response-modal" name="response"
+                            value='<?php echo $response; ?>' readonly />
+                    </div>
+
+                    <div class="card-footer">
+
+                        <button type="button" class="btn btn-primary" onclick="window.print()">
+                            Print
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--card end-->
+    </div>
+</body>
+
+</html>
